@@ -1,0 +1,19 @@
+<h1>Rate Your Experience</h1>
+
+<%= form_for Rating.new, url: '/post_rating' do |foo| %>
+<%= foo.label :stars %>
+<%= foo.select(:stars, [['1 star', 1], ['2 stars', 2], ['3 stars', 3], ['4 stars', 4], ['5 stars', 5]]) %>
+  
+  
+    <%= foo.label :comments %>
+<%= foo.text_area :comments %>
+  <%= foo.submit %>
+  <% end %>
+
+
+
+
+<% @ratings.each do |f| %>
+<%= f.stars %>: <%= f.comments %>
+<br>
+<% end %>

@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
-  get '/' => 'restaurants#index'
-  get '/restaurants/:id' => 'restaurants#show'
-  post '/post_rating' => 'ratings#create'
+  get '/' => 'users#index'
+  get '/users/:id' => 'users#show'
+  get '/users/:id/edit' => 'users#edit' 
+  patch '/users/:id/update' => 'users#update'  
+  post '/post_rant' => 'rants#create'    #based on route for ratings in restaurant app
   get '/signup' => 'users#new'
   post '/signup' => 'users#create'
-  get 'login' => 'sessions#new'
-  post 'login' => 'sessions#create'
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
+  
   
 end

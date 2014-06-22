@@ -1,0 +1,78 @@
+<a href = '/'>Home</a>
+<br>
+
+<% if @current_user == @user %>
+<a href= '/users/<%= @current_user.id %>/edit'>Update Profile</a>
+<% end %>
+
+<h1>
+  <%= @user.name %>'s Page
+</h1>
+
+<br>
+<h2>Profile:</h2>
+<br>
+<strong>Name:</strong>
+<br>
+<%= @user.name %>
+<br>
+<br>
+<img src="<%= @user.image %>" height="500" width="700"/>
+<br>
+<br>
+<strong>Favorite podcast:</strong>
+<br>
+<%= @user.podcast %>
+<br>
+<br>
+<strong>Favorite pizza topping:</strong>
+<br>
+<%= @user.pizza_topping %>
+<br>
+<br>
+<strong>Most identifies with "Mad Men" character:</strong>
+<br>
+<%= @user.character %>
+<br>
+<br>
+<h2>Wall:</h2>
+<br>
+
+<%= form_for Rant.new, url: '/post_rant' do |foo| %>
+<h3>Rant away:</h3>
+<%= foo.text_field :recipient_user_id, value: @user.id %> <!-- need this to capture which wall in the rant model -->
+
+
+<% if @current_user %>
+<%= foo.text_field :creator_user_name, value: @current_user.name %>  <!-- need this to capture the creator of the rant in the rant model but will be nil if no one signed in so need conditional -->
+<% end %>
+
+<%= foo.text_area :content %>
+  <%= foo.submit %>
+  <% end %>
+
+<br>
+<br>
+<h3>Prior Rants:</h3>
+
+
+<%= @rants.each do |f| %>
+<%= f.content %>
+<% if f.creator_user_name %>
+(<%= f.creator_user_name %>)
+<% end %>
+<br>
+<% end %>
+
+
+
+
+
+<br>
+<h2>Friends:</h2>
+<br>
+<br>
+
+
+
+

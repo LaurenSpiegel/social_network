@@ -1,6 +1,6 @@
-<h1>Signup</h1>
+<h1>Update Profile</h1>
 
-<%= form_for User.new, url: '/signup' do |f| %>
+<%= form_for @current_user, url: "/users/#{@current_user.id}/update" do |f| %>
 What would you like us to call you?
 <br>
 <%= f.text_field :name %>
@@ -34,11 +34,11 @@ If you were a character on "Mad Men", who would you be?
 <%= f.password_field :password_confirmation %>
 <br>
 <br>
-Attach a profile picture
+Attach a profile photo:
 <%= f.file_field :image %>  
+
 <br>
 <br>
 
-<%= f.submit "Signup" %>
+<%= f.submit "Update Profile" %>
 <% end %>
-

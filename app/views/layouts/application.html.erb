@@ -1,10 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Super Restaurant Review</title>
+  <title>Social Network</title>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+  <style>
+    .indent{
+      margin-left: 20px;
+    }
+  </style>
+    
+  
 </head>
 <body>
   
@@ -12,7 +22,7 @@
 
   <% if @current_user %>
   <div>
-    Welcome, <%= @current_user.email %>
+    Welcome, <%= @current_user.name %>
     <br>
     <a href="/logout">Logout</a>
     <br>
@@ -25,9 +35,10 @@
     <% end %>
   
   
-<%= yield %>
+<div class="indent">
+  <%= yield %>
+    </div>
   
-  Number of pageviews: <%= @pageviews %>
 
 </body>
 </html>

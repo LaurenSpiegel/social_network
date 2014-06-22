@@ -40,3 +40,4 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'mongoid', '~> 4.0.0.rc1', github: 'mongoid/mongoid'
 
+gem 'mongoid-paperclip', :require => "mongoid_paperclip"

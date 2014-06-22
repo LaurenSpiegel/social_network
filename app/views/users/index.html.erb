@@ -1,0 +1,13 @@
+<h1>Members of the Social Network</h1>
+
+<% @users.each do |u| %>
+<a href="/users/<%= u.id %>"><%= u.name %></a>
+<br>
+<% end %>
+
+
+<br>
+
+<% if @current_user != nil %>
+<a href='/users/<%= @current_user.id %>/'><strong>Go to my page</strong></a>
+<% end %>

@@ -17,7 +17,9 @@
 <%= @user.name %>
 <br>
 <br>
+<% if @image_name != nil %>
 <img src="<%= @user.image %>" height="500" width="700"/>
+<% end %>
 <br>
 <br>
 <strong>Favorite podcast:</strong>
@@ -40,14 +42,14 @@
 
 <%= form_for Rant.new, url: '/post_rant' do |foo| %>
 <h3>Rant away:</h3>
-<%= foo.text_field :recipient_user_id, value: @user.id %> <!-- need this to capture which wall in the rant model -->
-
+<%= foo.hidden_field :recipient_id, value: @user.id %> <!-- need this to capture which wall in the rant model -->
 
 <% if @current_user %>
-<%= foo.text_field :creator_user_name, value: @current_user.name %>  <!-- need this to capture the creator of the rant in the rant model but will be nil if no one signed in so need conditional -->
+<%= foo.hidden_field :creator_user_name, value: @current_user.name %>  <!-- need this to capture the creator of the rant in the rant model but will be nil if no one signed in so need conditional -->
 <% end %>
 
-<%= foo.text_area :content %>
+<%= foo.text_area :content,  :size => "60%x5%" %>
+<br>
   <%= foo.submit %>
   <% end %>
 
@@ -56,11 +58,15 @@
 <h3>Prior Rants:</h3>
 
 
-<%= @rants.each do |f| %>
+<%= @rants.reverse_each do |f| %>
+<ul>
+  <li>
 <%= f.content %>
 <% if f.creator_user_name %>
-(<%= f.creator_user_name %>)
+    <br><b>(Rant brought to you by <%= f.creator_user_name %>)</b>
 <% end %>
+  </li>
+</ul>
 <br>
 <% end %>
 

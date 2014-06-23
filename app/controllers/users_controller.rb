@@ -27,6 +27,7 @@ class UsersController < ApplicationController
     @users = User.all
     @user = User.find(params[:id]) #this refers to the person whose profile you are looking at rather than the current_user viewing.
     @rants = @user.rants
+    @image_name = @user[:image_file_name]
   
   end
   

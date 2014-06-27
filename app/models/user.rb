@@ -16,6 +16,8 @@ class User
   
   has_many :rants, class_name: 'Rant', inverse_of: :recipient
   
+  has_many :friends, class_name: 'Friend', inverse_of: :recipient
+  
   has_mongoid_attached_file :image 
   validates_attachment_file_name :image, :matches => [/png\Z/, /jpe?g\Z/]
   
